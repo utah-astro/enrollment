@@ -32,7 +32,6 @@ def term_key_to_semester_year(term_key):
 def semester_year_to_term_key(semester, year):
     """
     Convert semester and year to a 4-digit term number
-
     """
     semester = str(semester).strip().lower()
     return 1000 + int(year) % 100 * 10 + ["spring", "summer", "fall"].index(semester) * 2 + 4
@@ -56,7 +55,7 @@ def fetch_classes(term_key, subject):
 def run(year_start=None, num_years=10, minimum_cat_no=1000, save_to=None):
     """
     Collect all enrollment numbers of a given period.
-    
+
     Parameters
     ----------
     year_start : None or int
@@ -99,9 +98,9 @@ def run(year_start=None, num_years=10, minimum_cat_no=1000, save_to=None):
     t_all = t_all[["year", "semester", "cat_no", "session", "title", "enrolled_astr", "enrolled_phys", "enrolled_all"]]
     if save_to:
         t_all.write(save_to, format="ascii.csv", overwrite=True)
-    
+
     return t_all
-    
+
 
 def main():
     """
@@ -118,4 +117,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
